@@ -39,11 +39,11 @@ export default function Home({ posts }) {
               <p className="mt-4 mb-8">
                 I started my coding journey in 2016 with C++/Python in college.
                 <br />
-                Back then I was still in a business major.
+                Back then I was still in an interdisciplinary major.
                 <br />
                 I had my first software engineering internship in 2020.
                 <br />
-                Now I am a master student majoring in Computing and information Science.
+                Now I am a master student concentrating in computing and information Science.
               </p>
               <div className="flex flex-col space-y-1">
                 <Link href="/projects" className="hover:underline">
@@ -54,12 +54,8 @@ export default function Home({ posts }) {
                   <Twemoji emoji="memo" />
                   <span className="ml-2">My technical writings</span>
                 </Link>
-                <Link href="/travel" className="hover:underline">
-                  <Twemoji emoji="sparkles" />
-                  <span className="ml-2">My travel footprints</span>
-                </Link>
                 <Link href="/about" className="hover:underline">
-                  <Twemoji emoji="eyes" />
+                  <Twemoji emoji="sparkles" />
                   <span className="ml-2">More about me and myself</span>
                 </Link>
               </div>
