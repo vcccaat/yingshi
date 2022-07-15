@@ -22,8 +22,6 @@ const DisqusComponent = dynamic(
 
 const Comments = ({ frontMatter }) => {
   let term
-  const comment = siteMetadata?.comment
-  if (!comment || Object.keys(comment).length === 0) return <></>
   switch (
     siteMetadata.comment.giscusConfig.mapping ||
     siteMetadata.comment.utterancesConfig.issueTerm
@@ -39,7 +37,7 @@ const Comments = ({ frontMatter }) => {
       break
   }
   return (
-    <div id="comment">
+    <>
       {siteMetadata.comment && siteMetadata.comment.provider === 'giscus' && (
         <GiscusComponent mapping={term} />
       )}
@@ -49,7 +47,7 @@ const Comments = ({ frontMatter }) => {
       {siteMetadata.comment && siteMetadata.comment.provider === 'disqus' && (
         <DisqusComponent frontMatter={frontMatter} />
       )}
-    </div>
+    </>
   )
 }
 

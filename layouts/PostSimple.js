@@ -1,68 +1,81 @@
-import Link from '@/components/Link'
+import Comments from '@/components/comments'
 import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
-import { BlogSEO } from '@/components/SEO'
+import { BlogSeo } from '@/components/SEO'
+import SocialButtons from '@/components/SocialButtons'
+import Twemoji from '@/components/Twemoji'
 import siteMetadata from '@/data/siteMetadata'
 import formatDate from '@/lib/utils/formatDate'
-import Comments from '@/components/comments'
-import ScrollTopAndComment from '@/components/ScrollTopAndComment'
+import Tag from '@/components/Tag'
+import ViewCounter from '@/components/ViewCounter'
 
-export default function PostLayout({ frontMatter, authorDetails, next, prev, children }) {
-  const { date, title } = frontMatter
+export default function PostLayout({ frontMatter, type, children, authorDetails }) {
+  const {
+    date,
+    title,
+    slug,
+    fileName,
+    tags,
+    readingTime: { text: readingTimeText },
+  } = frontMatter
+  const postUrl = `${siteMetadata.siteUrl}/${type}/${slug}`
 
   return (
     <SectionContainer>
-      <BlogSEO url={`${siteMetadata.siteUrl}/blog/${frontMatter.slug}`} {...frontMatter} />
-      <ScrollTopAndComment />
+      <BlogSeo
+        url={`${siteMetadata.siteUrl}/${type}/${slug}`}
+        {...frontMatter}
+        authorDetails={authorDetails}
+      />
       <article>
         <div>
-          <header>
-            <div className="space-y-1 border-b border-gray-200 pb-10 text-center dark:border-gray-700">
+          <header className="py-6 xl:pb-16 xl:pt-16">
+            <div className="space-y-4">
+              {tags && (
+                <div className="flex flex-wrap">
+                  {tags.map((tag) => (
+                    <Tag key={tag} text={tag} />
+                  ))}
+                </div>
+              )}
+              <div className="">
+                <PageTitle>{title}</PageTitle>
+              </div>
               <dl>
                 <div>
                   <dt className="sr-only">Published on</dt>
-                  <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                    <time dateTime={date}>{formatDate(date)}</time>
+                  <dd className="flex flex-wrap text-sm md:text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                    <time dateTime={date} className="flex items-center justify-center">
+                      <Twemoji emoji="calendar" size="" />
+                      <span className="ml-1.5 md:ml-2">{formatDate(date)}</span>
+                    </time>
+                    <span className="mx-2">{` • `}</span>
+                    <div className="flex items-center">
+                      <Twemoji emoji="hourglass-not-done" size="" />
+                      <span className="ml-1.5 md:ml-2">
+                        {readingTimeText.replace('min', 'mins')}
+                      </span>
+                    </div>
+                    {/* <span className="mx-2">{` • `}</span>
+                    <div className="flex items-center">
+                      <Twemoji emoji="eye" size="" />
+                      <ViewCounter className="ml-1.5 md:ml-2" slug={slug} />
+                    </div> */}
                   </dd>
                 </div>
               </dl>
-              <div>
-                <PageTitle>{title}</PageTitle>
-              </div>
             </div>
           </header>
-          <div
-            className="divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:divide-y-0 "
-            style={{ gridTemplateRows: 'auto 1fr' }}
-          >
-            <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:pb-0">
-              <div className="prose max-w-none pt-10 pb-8 dark:prose-dark">{children}</div>
-            </div>
-            <Comments frontMatter={frontMatter} />
-            <footer>
-              <div className="flex flex-col text-sm font-medium sm:flex-row sm:justify-between sm:text-base">
-                {prev && (
-                  <div className="pt-4 xl:pt-8">
-                    <Link
-                      href={`/blog/${prev.slug}`}
-                      className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                    >
-                      &larr; {prev.title}
-                    </Link>
-                  </div>
-                )}
-                {next && (
-                  <div className="pt-4 xl:pt-8">
-                    <Link
-                      href={`/blog/${next.slug}`}
-                      className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                    >
-                      {next.title} &rarr;
-                    </Link>
-                  </div>
-                )}
+          <div className="pb-8" style={{ gridTemplateRows: 'auto 1fr' }}>
+            <div className="xl:pb-0 xl:col-span-3 xl:row-span-2">
+              <div className="pb-8 prose prose-lg md:prose-xl dark:prose-dark max-w-none">
+                {children}
               </div>
-            </footer>
+              <div className="border-t border-gray-200 dark:border-gray-700">
+                <SocialButtons postUrl={postUrl} title={title} fileName={fileName} />
+                {/* <Comments frontMatter={frontMatter} /> */}
+              </div>
+            </div>
           </div>
         </div>
       </article>
