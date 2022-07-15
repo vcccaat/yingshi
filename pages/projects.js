@@ -50,6 +50,7 @@ export default function Projects() {
                 href={project.href}
                 source={project.source}
                 repoName={project.repoName}
+                custom={project.custom}
               />
             ))}
           </div>

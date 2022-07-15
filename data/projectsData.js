@@ -4,6 +4,7 @@ const projectsData = [
     description: `I built a game engine using C++ and GLSL in the Interactive Computer Graphics course taught by Steve Marschner. It can render complex shading and 3D animation. And as a team, we used this game engine to build a first-person Portal demo including a simple player controll and texture mapping in the scene. The player can seamlessly transit between both side of the portal, and the view through the portal matches up with the player's current perspective. `,
     imgSrc: '/static/images/portal-demo.jpg',
     source: 'https://github.com/vcccaat/OpenGL-Game-Engine',
+    custom: 'https://graphics-animation-demo.vercel.app/',
     type: 'self',
   },
   {

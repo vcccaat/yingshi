@@ -1,7 +1,7 @@
 import Image from './Image'
 import Link from './Link'
 
-const ProjectCard = ({ title, description, imgSrc, href, repoName, source }) => (
+const ProjectCard = ({ title, description, imgSrc, href, repoName, source, custom }) => (
   <div className="p-4 md:w-1/2 md" style={{ maxWidth: '544px' }}>
     <div className="h-full overflow-hidden border-2 shadow-md shadow-indigo-500/40 dark:hover:border-gray-400 dark:border-gray-600 border-gray-400 hover:border-gray-500 rounded-md border-opacity-60">
       <Image
@@ -35,6 +35,16 @@ const ProjectCard = ({ title, description, imgSrc, href, repoName, source }) => 
           )}
         </div>
         <p className="mb-3 prose text-gray-500 max-w-none dark:text-gray-400">{description}</p>
+        {custom && (
+          <Link
+            href={custom}
+            className="text-base font-medium leading-6 text-primary-300 hover:text-primary-600 dark:hover:text-primary-400"
+            aria-label={`Link to ${title}`}
+          >
+            Check out Milestone Demo Videos &rarr;
+          </Link>
+        )}
+        <p>{`\n`}</p>
         {href && (
           <Link
             href={href}
