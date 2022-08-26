@@ -3,7 +3,7 @@ title: Developing VR in Unity on Mac M1 Pro Chip
 date: '2022-03-20'
 tags: ['VR', 'Unity', 'Oculus Quest', '3D']
 draft: false
-summary: 'Follow my guide to learn building VR application in Unity from scratch'
+summary: 'Beginner guide of developing VR using Unity on Mac'
 ---
 
 ## Let's get started

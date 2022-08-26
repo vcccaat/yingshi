@@ -3,7 +3,7 @@ title: Build a Ray Tracer from Scratch in C++
 date: '2022-05-01'
 tags: ['Computer Graphics', '3D']
 draft: false
-summary: 'Follow my guide to learn building VR application in Unity from scratch'
+summary: 'Follow my guide to learn building a Ray Tracer from scratch'
 ---
 
 ## Construct Everything
@@ -39,6 +39,7 @@ class Material {
 ```
 
 ### Add 3D meshes into scene 
+The code following makes use of Intel Embree, a high performance ray tracing kernels that helps graphics application engineers to improve the performance of their photorealistic rendering application.
 ```javascript
 // aiScene is the pointer to assimp file object
 RTCScene initializeScene(const aiScene* aiScene, Camera& cam){
