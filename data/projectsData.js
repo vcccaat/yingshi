@@ -35,7 +35,7 @@ const projectsData = [
     title: 'Animal Crossing Handbook',
     description: `A web app provides a detail card of all characters and items in the game Animal Crossing in Nintendo. Users can serarch items by keywords, sort items by price, and apply multiple filters. Developed in React, CSS3, and Bootstrap.`,
     imgSrc: '/static/images/animal-crossing.jpg',
-    href: 'http://boxing-backbacon-63666.herokuapp.com/',
+    href: 'https://acnh-r7eswd6g9-vcccaat.vercel.app/',
     source: 'https://github.com/vcccaat/acnh',
     type: 'self',
   },
